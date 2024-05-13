@@ -34,10 +34,8 @@ jobs:
     - name: check task commands
       run: sbt tasks
     - name: run checks
-      run: echo "$MAIN_CLASS" ; history; find . -name playground
-    - name: sbt run selected main
-      run: sbt "runMain $MAIN_CLASS"
-    - name: sbt deprecations
+      run: echo "$MAIN_CLASS" ; find . -name playground
+    - name: sbt run selected main (with deprecation check)
       run: sbt 'set ThisBuild/scalacOptions ++= Seq("-deprecation", "-feature") ; compile; runMain '$MAIN_CLASS
     #- name: Upload dependency graph
     #  uses: scalacenter/sbt-dependency-submission@ab086b50c947c9774b70f39fc7f6e20ca2706c91
