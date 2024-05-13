@@ -31,6 +31,8 @@ jobs:
     #- name: Run tests
     #  run: sbt test
     #  # Optional: This step uploads information to the GitHub dependency graph and unblocking Dependabot alerts for the repository
+    - name: check task commands
+      run: sbt tasks
     - name: run selected main
       run: sbt runMain $MAIN_CLASS
     - name: Upload dependency graph
