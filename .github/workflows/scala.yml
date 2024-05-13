@@ -36,6 +36,6 @@ jobs:
     - name: run checks
       run: echo "$MAIN_CLASS" ; history; find . -name playground
     - name: sbt run selected main
-      run: sbt runMain || echo "error running sbt runMain $MAIN_CLASS"
+      run: sbt "runMain $MAIN_CLASS" || echo "error running sbt runMain $MAIN_CLASS"
     #- name: Upload dependency graph
     #  uses: scalacenter/sbt-dependency-submission@ab086b50c947c9774b70f39fc7f6e20ca2706c91
