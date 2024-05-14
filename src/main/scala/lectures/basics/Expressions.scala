@@ -79,8 +79,9 @@ object Expressions extends App{
     print(if (x.length < 0) "!" else " ")
     x
   }
-  val helloWorld = println(hello)
-  helloWorld
+  val helloWorld: Unit = println {
+    hello
+  }
   val greeting = {
     if (helloWorld.getClass.getSimpleName.equals("String")) helloWorld
     "hello!"
