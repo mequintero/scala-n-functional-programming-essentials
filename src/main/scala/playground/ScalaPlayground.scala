@@ -41,7 +41,5 @@ object ScalaPlayground {
     println("Is 2003 is Prime:" + Functions.isPrime(2003))
   }
   def main(args: Array[String]): Unit = {
-    values_playground
-    expressions
   }
 }
