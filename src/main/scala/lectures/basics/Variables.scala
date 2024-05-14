@@ -1,7 +1,7 @@
 package lectures.basics
 
 object Variables extends App {
-  private var any = 1
+  var any = 1
   any = Values.two
   println("%d length(%d)".format(any, any.toString.length))
   // variables can mutate only of value. type variables is immutable

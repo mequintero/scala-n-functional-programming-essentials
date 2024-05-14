@@ -1,6 +1,6 @@
 package playground
 
-import lectures.basics.Values
+import lectures.basics.{Expressions, Values}
 
 object ScalaPlayground {
   private val values: Values.type = Values
@@ -20,7 +20,15 @@ object ScalaPlayground {
     println("eleven: " + values.eleven)
     println("twelve: " + values.twelve)
   }
+  private val expressions = {
+    val obj = Expressions
+    println("Playground of "+obj.getClass)
+    println("x:" + obj.x)
+    println("y:" + obj.y)
+    println("z:" + obj.z)
+  }
   def main(args: Array[String]): Unit = {
     values_playground
+    expressions
   }
 }
