@@ -65,7 +65,7 @@ object Expressions extends App{
 
   // Code blocks
   val aCodeBlock = {
-    val x = 1
+    val x = Variables.any
     println(x = 4)
     var y = if (x > 4) 2 else 3
     y += 1
