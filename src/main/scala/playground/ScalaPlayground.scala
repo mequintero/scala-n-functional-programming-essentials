@@ -1,6 +1,6 @@
 package playground
 
-import lectures.basics.{Expressions, Functions, Values, Variables}
+import lectures.basics.{Expressions, Functions, Recursion, Values, Variables}
 
 object ScalaPlayground {
   private val values: Values.type = Values
@@ -41,5 +41,8 @@ object ScalaPlayground {
     println("Is 2003 is Prime:" + Functions.isPrime(2003))
   }
   def main(args: Array[String]): Unit = {
+    println("Playground of "+Recursion.getClass)
+    println("factorial: " + Recursion.factorial(20000))
+    println("anotherFactorial: " + Recursion.anotherFactorial(20000))
   }
 }
