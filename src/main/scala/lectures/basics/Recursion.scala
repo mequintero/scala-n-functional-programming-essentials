@@ -1,12 +1,17 @@
 package lectures.basics
 
+import scala.annotation.tailrec
+
 object Recursion extends App{
   var acc: BigInt = 1
+  val printable = false
+  @tailrec
   def factorial(n: Int): BigInt =
     acc *= n
     if (n <= 1) acc
     else
-      println("Recursion using acc for " + n + " needs calculate factorial for " + (n - 1))
+      if (printable)
+        println("Recursion using acc for " + n + " needs calculate factorial for " + (n - 1))
       factorial(n - 1)
 
 //  println(Functions.factorial(5000)) // stack overflow!
@@ -14,6 +19,7 @@ object Recursion extends App{
   println("Recursion using acc for 30000 returns " +factorial(30000))
 
   def anotherFactorial(n: Int): BigInt =
+    @tailrec
     def accumulator(n: Int, acc: BigInt): BigInt =
       if (n <= 1) acc
       else accumulator(n - 1, n * acc)
@@ -23,6 +29,7 @@ object Recursion extends App{
 
   // WHEN YOU NEED LOOPS, USE _TAIL_ RECURSION.
 
+  @tailrec
   def concatenateAnyTimes(aString: String, n: Int, accumulator: String): String =
     if (n <= 0) accumulator
     else concatenateAnyTimes(aString, n - 1, aString + accumulator)
@@ -31,6 +38,7 @@ object Recursion extends App{
   println(concatenateAnyTimes("hello", 3, ""))
 
   def isPrime(n: Int): Boolean =
+    @tailrec
     def isPrimeUntil(t: Int, isStillPrime: Boolean): Boolean =
       if (!isStillPrime) false
       else (t <= 1) || isPrimeUntil(t - 1, n % t != 0 && isStillPrime)
@@ -42,6 +50,7 @@ object Recursion extends App{
   println(isPrime(629))
 
   def fibonacci(n: Int): Int =
+    @tailrec
     def fibonacciSequence(i: Int, last: Int, nextToLast: Int): Int =
       if (i >= n) last
       else fibonacciSequence(i + 1, last + nextToLast, last)

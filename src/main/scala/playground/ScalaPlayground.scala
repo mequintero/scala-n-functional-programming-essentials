@@ -1,10 +1,10 @@
 package playground
 
-import lectures.basics.{Expressions, Functions, Recursion, Values, Variables}
+import lectures.basics.{CallByName, CallByValue, Expressions, Functions, Recursion, Values, Variables}
 
 object ScalaPlayground {
   private val values: Values.type = Values
-  private val values_playground = {
+  private val values_playground: Unit = {
     println("Playground of "+values.getClass)
     val one = values.x
     println(one)
@@ -20,14 +20,14 @@ object ScalaPlayground {
     println("eleven: " + values.eleven)
     println("twelve: " + values.twelve)
   }
-  private val expressions = {
+  private val expressions: Unit = {
     val obj = Expressions
     println("Playground of "+obj.getClass)
     println("x:" + obj.x)
     println("y:" + obj.y)
     println("z:" + obj.z)
   }
-  private val functions = {
+  private val functions: Unit = {
     println("Playground of "+Functions.getClass)
     println("aFunction: " + Functions.aFunction(Expressions.greeting, Variables.any))
     println("aParameterlessFunction: " + Functions.aParameterlessFunction())
@@ -44,5 +44,10 @@ object ScalaPlayground {
     println("Playground of "+Recursion.getClass)
     println("factorial: " + Recursion.factorial(20000))
     println("anotherFactorial: " + Recursion.anotherFactorial(20000))
+    val callByNameOrValue = {
+      Array(CallByValue, CallByName)
+    }
+    println("Playground of " + callByNameOrValue.map(
+      callByNameOrValue => callByNameOrValue.getClass).mkString(", "))
   }
 }
