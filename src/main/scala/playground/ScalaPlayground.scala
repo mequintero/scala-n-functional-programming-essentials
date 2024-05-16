@@ -1,10 +1,10 @@
 package playground
 
-import lectures.basics.{CallByName, CallByValue, Expressions, Functions, Recursion, Values, Variables}
+import lectures.basics.*
 
 object ScalaPlayground {
   private val values: Values.type = Values
-  private val values_playground: Unit = {
+  private val valuesPlayground: Unit = {
     println("Playground of "+values.getClass)
     val one = values.x
     println(one)
@@ -41,13 +41,36 @@ object ScalaPlayground {
     println("Is 2003 is Prime:" + Functions.isPrime(2003))
   }
   def main(args: Array[String]): Unit = {
-    println("Playground of "+Recursion.getClass)
-    println("factorial: " + Recursion.factorial(20000))
-    println("anotherFactorial: " + Recursion.anotherFactorial(20000))
-    val callByNameOrValue = {
-      Array(CallByValue, CallByName)
+    val recursionPlayground = {
+      println("Playground of " + Recursion.getClass)
+      println("factorial: " + Recursion.factorial(20000))
+      println("anotherFactorial: " + Recursion.anotherFactorial(20000))
+      val callByNameOrValue = {
+        Array(CallByValue, CallByName)
+      }
+      println("Playground of " + callByNameOrValue.map(
+        callByNameOrValue => callByNameOrValue.getClass).mkString(", "))
     }
-    println("Playground of " + callByNameOrValue.map(
-      callByNameOrValue => callByNameOrValue.getClass).mkString(", "))
+    val defaultArgsPlayground = {
+      println("Playground of " + DefaultArgs.getClass)
+      println("factorial with default arguments setted: " + DefaultArgs.fact10)
+      println("factorial with default arguments only n(21000): " + DefaultArgs.factorial(21000))
+      println("savePicture: ")
+      DefaultArgs.savePicture(height=600, width=800)
+    }
+    val stringOperations = {
+      println("Playground of " + StringOperations.getClass)
+      val obj = StringOperations
+      obj.str = "Hi, My name is maquinterocar"
+      println(obj.str.charAt(2))
+      println(obj.str.substring(7, 11))
+      println(obj.str.split(" ").toList)
+      println(obj.str.startsWith("Hello"))
+      println(obj.str.replace(" ", "-"))
+      println(obj.str.toLowerCase())
+      println(obj.str.length)
+      println(obj.str.reverse)
+      println(obj.str.take(2))
+    }
   }
 }
