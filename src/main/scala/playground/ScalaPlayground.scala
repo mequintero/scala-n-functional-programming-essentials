@@ -1,10 +1,11 @@
 package playground
 
 import lectures.basics.*
-import lectures.oop.{Basics, Counter, Novel, Writer}
+import lectures.oop.{Basics, Counter, MethodNotations, Novel, Objects, Writer}
 
 import java.text.SimpleDateFormat
 import java.util.Date
+import scala.language.postfixOps
 
 object ScalaPlayground {
   private val values: Values.type = Values
@@ -90,5 +91,19 @@ object ScalaPlayground {
     new Counter().increment.increment.increment.increment
       .decrement(novel.authorAge).increment(Variables.any)
       .print.decrement.decrement.print
+    println("playground for "+ MethodNotations.getClass)
+    println("Person likes as natural language: " + (MethodNotations.me likes "Matrix"))
+    println("hanging! : %s" format MethodNotations.me +
+      new MethodNotations.Person(StringOperations.name, MethodNotations.me.favourite))
+    println("Unary operations for !(false): " + !MethodNotations.me )
+    println("postfix operations for: " .+(MethodNotations.me isAlive))
+    println("apply me:" + MethodNotations.me())
+    println("Unary operations for ~: " + ~MethodNotations.me)
+    println("nickname: " + (MethodNotations.me + "maquinterocar")())
+    println("plus me:" + +MethodNotations.me.age)
+    println("me learning: ".+(MethodNotations.me learnsScala))
+    println("apply me n: " + MethodNotations.me(Variables.any))
+
+    println("playground for " + Objects.getClass)
   }
 }
