@@ -1,6 +1,10 @@
 package playground
 
 import lectures.basics.*
+import lectures.oop.{Basics, Counter, Novel, Writer}
+
+import java.text.SimpleDateFormat
+import java.util.Date
 
 object ScalaPlayground {
   private val values: Values.type = Values
@@ -72,5 +76,19 @@ object ScalaPlayground {
       println(obj.str.reverse)
       println(obj.str.take(2))
     }
+    println("Playground for " + Basics.getClass)
+    Basics.person.greeting()
+    Basics.person.greeting("Marcel")
+    val asWriter = new Writer(firstname = Basics.person.name,
+      year = SimpleDateFormat("yyyy").format(Date()).toInt - 30 + 1)
+    val novel = new Novel(StringOperations.greeting, asWriter.year + Basics.person.age, asWriter)
+    println("authorAge of Novel:" + novel.authorAge)
+    asWriter.lastname = "Quintero"
+    val impostor = new Writer(StringOperations.name, asWriter.lastname, asWriter.year)
+    println(s"authorName of Novel is ${impostor.fullname}?: ${novel.isWrittenBy(impostor)}")
+    println("authorName of Novel is %s?: %b".format(asWriter.fullname, novel.isWrittenBy(asWriter)))
+    new Counter().increment.increment.increment.increment
+      .decrement(novel.authorAge).increment(Variables.any)
+      .print.decrement.decrement.print
   }
 }
