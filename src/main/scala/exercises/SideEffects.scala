@@ -1,6 +1,6 @@
 package exercises
 
-object sideEffects {
+object SideEffects {
   def main(args: Array[String]): Unit = {
     val greeting = {
       val name = if (args.length > 0) args(0) else "World"

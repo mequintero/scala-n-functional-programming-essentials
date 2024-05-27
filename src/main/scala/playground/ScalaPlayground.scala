@@ -1,11 +1,12 @@
 package playground
 
 import lectures.basics.*
-import lectures.oop.{Basics, Counter, MethodNotations, Novel, Objects, Writer}
+import lectures.oop.*
 
 import java.text.SimpleDateFormat
 import java.util.Date
 import scala.language.postfixOps
+import exercises.{Consecutive, Empty}
 
 object ScalaPlayground {
   private val values: Values.type = Values
@@ -105,5 +106,24 @@ object ScalaPlayground {
     println("apply me n: " + MethodNotations.me(Variables.any))
 
     println("playground for " + Objects.getClass)
+    println("singleton comparison: " .+(Objects.mary == Objects.john))
+    println("object comparison: " .+(Objects.person1 == Objects.person2))
+    println("object as application: " .+(Objects.bobbie.name))
+
+    println("playground for " + Inheritance.getClass)
+    print("check inheritance: " + Inheritance.dog.creatureType + " eating  ...")
+    Inheritance.dog.eat
+    println("check sealed: " )
+    // class anyClass extends Inheritance.UnknownAnimal
+    // class anyClass extends Inheritance.Animal
+    print("unknown animal is: %s -> %s ".format(
+      Inheritance.unknownAnimal.getClass, Inheritance.unknownAnimal.creatureType))
+    Inheritance.unknownAnimal.eat
+    println("playground for " + AbstractDataTypes.getClass)
+    print("check trait: ")
+    AbstractDataTypes.croc.eat(AbstractDataTypes.dog)
+    val list = new Consecutive(1, new Consecutive(2, new Consecutive(3, Empty)))
+    println("check MyList (toString override)  %s -> %d ? %b".format(
+      list, list.tail.add(4).head, list.isEmpty))
   }
 }
